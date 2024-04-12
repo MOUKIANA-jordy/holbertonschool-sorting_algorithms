@@ -26,7 +26,7 @@ void _quick_sort(int *array, size_t size, int low, int high)
 
 	if (low < high)
 	{
-		pivot = _partition(array, size, low, high);
+		pivot = partition(array, size, low, high);
 
 		_quick_sort(array, size, low, pivot - 1);
 		_quick_sort(array, size, pivot + 1, high);
