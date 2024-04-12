@@ -22,49 +22,49 @@ void quick_sort(int *array, size_t size)
  */
 void _quick_sort(int *array, size_t size, int low, int high)
 {
-	int pi;
+	int pivot;
 
 	if (low < high)
 	{
-		pi = partition(array, size, low, high);
+		pivot = _partition(array, size, low, high);
 
-		_quick_sort(array, size, low, pi - 1);
-		_quick_sort(array, size, pi + 1, high);
+		_quick_sort(array, size, low, pivot - 1);
+		_quick_sort(array, size, pivot + 1, high);
 	}
 }
 
 /**
- * partition - Perform Lomuto partition
+ * _partition - Perform Lomuto partition
  * @array: List
  * @size: Size of array
  * @low: Start index
  * @high: End index
  * Return: Index pivot element
  */
-int partition(int *array, size_t size, int low, int high)
+int _partition(int *array, size_t size, int low, int high)
 {
 	int pivot = array[high];
-	int i = (low - 1);
+	int i = low;
 
-	for (int j = low; j <= high - 1; j++)
+	for (int j = low; j < high; j++)
 	{
 		if (array[j] < pivot)
 		{
-			i++;
-			if (array[i] != array[j])
+			if (i != j)
 			{
 				swap(&array[i], &array[j]);
 				print_array(array, size);
 			}
+			i++;
 		}
 	}
 
-	if (array[i + 1] != array[high])
+	if (array[i] != array[high])
 	{
-		swap(&array[i + 1], &array[high]);
+		swap(&array[i], &array[high]);
 		print_array(array, size);
 	}
-	return (i + 1);
+	return (i);
 }
 
 /**
