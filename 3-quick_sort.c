@@ -34,14 +34,14 @@ void _quick_sort(int *array, size_t size, int low, int high)
 }
 
 /**
- * _partition - Perform Lomuto partition
+ * partition - Perform Lomuto partition
  * @array: List
  * @size: Size of array
  * @low: Start index
  * @high: End index
  * Return: Index pivot element
  */
-int _partition(int *array, size_t size, int low, int high)
+int partition(int *array, size_t size, int low, int high)
 {
 	int pivot = array[high];
 	int i = low, temp;
