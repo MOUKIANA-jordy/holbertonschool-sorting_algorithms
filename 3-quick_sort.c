@@ -1,6 +1,4 @@
 #include "sort.h"
-void _quick_sort(int *array, size_t size, int low, int high);
-int partition(int *array, size_t size, int low, int high);
 
 /**
  * partition - Perform Lomuto partition
