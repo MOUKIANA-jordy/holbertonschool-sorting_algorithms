@@ -1,6 +1,39 @@
 #include "sort.h"
 
 /**
+ * quick_sort - Sort Quick for a array
+ * @array: List
+ * @size: Size of array
+ */
+void quick_sort(int *array, size_t size)
+{
+	if (array == NULL || size < 2)
+		return;
+
+	_quick_sort(array, size, 0, size - 1);
+}
+
+/**
+ * _quick_sort - Recursive for implement Quick sort Lomuto
+ * @array: List
+ * @size: Size of array
+ * @low: Start index
+ * @high: End index
+ */
+void _quick_sort(int *array, size_t size, int low, int high)
+{
+	int pi;
+
+	if (low < high)
+	{
+		pi = partition(array, size, low, high);
+
+		_quick_sort(array, size, low, pi - 1);
+		_quick_sort(array, size, pi + 1, high);
+	}
+}
+
+/**
  * partition - Perform Lomuto partition
  * @array: List
  * @size: Size of array
@@ -32,36 +65,6 @@ int partition(int *array, size_t size, int low, int high)
 		print_array(array, size);
 	}
 	return (i + 1);
-}
-
-/**
- * _quick_sort - Recursive for implement Quick sort Lomuto
- * @array: List
- * @size: Size of array
- * @low: Start index
- * @high: End index
- */
-void _quick_sort(int *array, size_t size, int low, int high)
-{
-	int pi;
-
-	if (low < high)
-	{
-		pi = partition(array, size, low, high);
-
-		_quick_sort(array, size, low, pi - 1);
-		_quick_sort(array, size, pi + 1, high);
-	}
-}
-
-/**
- * quick_sort - Sort Quick for a array
- * @array: List
- * @size: Size of array
- */
-void quick_sort(int *array, size_t size)
-{
-	_quick_sort(array, size, 0, size - 1);
 }
 
 /**
